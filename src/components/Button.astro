@@ -1,0 +1,32 @@
+---
+interface BaseProps {
+  renderAs: "link" | "button";
+  className?: string;
+  [key: string]: any;
+}
+
+interface LinkProps extends BaseProps {
+  renderAs: "link";
+  href: string;
+}
+
+interface ButtonProps extends BaseProps {
+  renderAs: "button";
+}
+
+type Props = LinkProps | ButtonProps;
+
+const { renderAs, href, className, ...rest } = Astro.props;
+---
+
+{
+  renderAs === "link" ? (
+    <a href={href} class:list={["button", className]} {...rest}>
+      <slot />
+    </a>
+  ) : (
+    <button class:list={["button", className]} {...rest}>
+      <slot />
+    </button>
+  )
+}

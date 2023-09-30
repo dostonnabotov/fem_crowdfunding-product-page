@@ -1,0 +1,16 @@
+---
+import Button from "./Button.astro";
+const { title, description, price, amount } = Astro.props;
+---
+
+<div class="project">
+  <div>
+    <h3>{title}</h3>
+    <p>Pledge {price} or more</p>
+  </div>
+  <p>{description}</p>
+  <div>
+    <p><span>{amount}</span> left</p>
+    <Button renderAs="button" data-size="sm">Select Reward</Button>
+  </div>
+</div>
